@@ -1,4 +1,26 @@
-yun-easy-wifi-switch
+Yun Easy Wifi Switch
 ====================
 
-Slightly more user-friendly WiFi network toggling for Arduino Yun
+A more user-friendly method for WiFi network toggling on Arduino Yun (or any OpenWrt device with removable storage). For when you want to give a Yun-based project to your non-tech-folk friends!
+
+It works by reading a wifi network's SSID, password and encryption method from a text file that is stored on a USB drive or MicroSD card. This file is accessed every time the Yun boots up and the WiFi settings are applied accordingly. If you need to change WiFi networks, you can take the USB drive or MicroSD card out of the Yun, plug it into a computer, edit the file, and place it back in the Yun.
+
+Installing
+-------
+
+1. Move `easy-wifi-switch` into your Yun's `/usr/bin/` directory.
+2. Move `wifi.cfg` on to a USB drive or MicroSD card and plug that into the Yun. I recommend USB due to its ubiquity.
+3. Update `/etc/rc.local` on your Yun so that the call to `wifi-live-or-reset` is commented out and a call to `easy-wifi-switch` is made. If you haven't yet made changes to the stock `rc.local` file, you can use the one provided here.
+
+Using
+------
+
+1. Remove the USB drive or MicroSD card from the Yun and plug it into a computer.
+2. Open `wifi.cfg` in any text editor and update the SSID, password and encryption variables to the desired values.
+3. Remove the USB drive from your computer and place it back into the Yun.
+4. Reboot the Yun. When it boots up, it will apply the new settings.
+
+Background
+------
+
+This was created for my [Trophy of the Future](https://github.com/sambrenner/future-trophy), an internet-connected fantasy football trophy built with an Arduino Yun. Because the trophy will change hands every year, I needed a simple way for its recipients to configure it to their WiFi networks without having to hold down buttons on the Yun itself or depend on an ethernet connection.
