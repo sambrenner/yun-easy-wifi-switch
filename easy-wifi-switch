@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# check config exist
+wificfg="/mnt/sda1/trophy/wifi.cfg"
+
+if [ -f "$wificfg" ]
+then
+	# load wifi config
+	source "$wificfg"
+
+	echo "Updating wifi settings:"
+	echo " - SSID: $ssid"
+	echo " - Key: $key"
+	echo " - Encryption: $encryption"
+	echo " "
+
+	# apply to OpenWrt UCI
+	# see: http://wiki.openwrt.org/doc/uci/wireless
+	/sbin/uci "set" "wireless.@wifi-iface[0].ssid=$ssid"
+	/sbin/uci "set" "wireless.@wifi-iface[0].key=$key"
+	/sbin/uci "set" "wireless.@wifi-iface[0].encryption=$encryption"
+	/sbin/uci commit wireless
+	wifi
+else
+	echo "$wificfg was not found. Leaving wifi alone."
+fi
