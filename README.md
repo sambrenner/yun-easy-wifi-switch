@@ -23,4 +23,10 @@ Using
 Background
 ------
 
-This was created for my [Trophy of the Future](https://github.com/sambrenner/future-trophy), an internet-connected fantasy football trophy built with an Arduino Yun. Because the trophy will change hands every year, I needed a simple way for its recipients to configure it to their WiFi networks without having to hold down buttons on the Yun itself or depend on an ethernet connection.
+This was created for my [Trophy of the Future](https://github.com/sambrenner/future-trophy), an internet-connected fantasy football trophy built with an Arduino Yun. Because the trophy will change hands every year, I needed a simple way for its recipients to configure it to their WiFi networks without having to connect to the Yun's network or depend on an ethernet connection.
+
+More Reading
+------
+
+[OpenWrt Wireless Configuration Docs](http://wiki.openwrt.org/doc/uci/wireless)
+[Trophy of the Future Documentation Part 1](http://samjbrenner.com/notes/making-the-worlds-first-internet-enabled-fantasy-football-trophy-part-1-fabrication/), [Part 2](http://samjbrenner.com/notes/making-the-worlds-first-internet-enabled-fantasy-football-trophy-part-2-programming/)
