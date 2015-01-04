@@ -16,6 +16,9 @@ then
 
 	# apply to OpenWrt UCI
 	# see: http://wiki.openwrt.org/doc/uci/wireless
+	/sbin/uci "set" "wireless.@wifi-device[0].channel=auto"
+	
+	/sbin/uci "set" "wireless.@wifi-iface[0].mode=sta"
 	/sbin/uci "set" "wireless.@wifi-iface[0].ssid=$ssid"
 	/sbin/uci "set" "wireless.@wifi-iface[0].key=$key"
 	/sbin/uci "set" "wireless.@wifi-iface[0].encryption=$encryption"

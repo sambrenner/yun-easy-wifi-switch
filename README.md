@@ -10,7 +10,7 @@ Installing
 
 1. Move `easy-wifi-switch` into your Yun's `/usr/bin/` directory.
 2. Move `wifi.cfg` on to a USB drive or MicroSD card and plug that into the Yun. I recommend USB due to its ubiquity.
-3. Update `/etc/rc.local` on your Yun so that the call to `wifi-live-or-reset` is commented out and a call to `easy-wifi-switch` is made. If you haven't yet made changes to the stock `rc.local` file, you can use the one provided here.
+3. In your Yun's `/etc/rc.local` file, add a call to `easy-wifi-switch` before the call to `wifi-live-or-reset`. If you haven't made changes to the stock `rc.local` file, you can use the one provided here.
 
 Using
 ------
