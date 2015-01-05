@@ -2,7 +2,7 @@
 
 UCI="/sbin/uci"
 
-# borrowed from /etc/init.d/handle_wifi_reset
+# set_or_delete is borrowed from /etc/init.d/handle_wifi_reset
 set_or_delete() {
     key=$1
     value=$2
@@ -33,8 +33,8 @@ fi
 
 if [ "$cfg_load" = true ] ; then
     # check if we are coming out of a self-induced reboot
-    if [ -f /tmp/easy-wifi-switch-reboot ] ; then
-	rm /tmp/easy-wifi-switch-reboot
+    if [ -f /root/easy-wifi-switch-reboot ] ; then
+	rm /root/easy-wifi-switch-reboot
 	echo "all done!"
 	exit 0
     fi
@@ -70,8 +70,8 @@ if [ "$cfg_load" = true ] ; then
     $UCI commit
 
     # RESTART
-    touch /tmp/easy-wifi-switch-reboot
-    reboot
+    /bin/touch /root/easy-wifi-switch-reboot
+    /sbin/reboot
 else
     echo "wifi.cfg was not found. Leaving wifi alone."
 fi
