@@ -66,9 +66,6 @@ if [ "$cfg_load" = true ] ; then
     $UCI "delete" "dhcp.@dnsmasq[0].interface"
     $UCI "add_list" "dhcp.@dnsmasq[0].interface=lo"
 
-    # ARDUINO
-    $UCI "set" "arduino.@arduino[0].easy_wifi_switch_step=rebooting"
-
     # COMMIT
     $UCI commit
 
