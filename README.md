@@ -5,6 +5,8 @@ A more user-friendly method for WiFi network toggling on Arduino Yun (or any Ope
 
 It works by reading a wifi network's SSID, password and encryption method from a text file that is stored on a USB drive or MicroSD card. This file is accessed every time the Yun boots up and the WiFi settings are applied accordingly. If you need to change WiFi networks, you can take the USB drive or MicroSD card out of the Yun, plug it into a computer, edit the file, and place it back in the Yun.
 
+I have tested it switching between WiFi networks and switching from AP mode (where the Arduino broadcasts its own network) to a WiFi network.
+
 Installing
 -------
 
@@ -28,5 +30,8 @@ This was created for my [Trophy of the Future](https://github.com/sambrenner/fut
 More Reading
 ------
 
-[OpenWrt Wireless Configuration Docs](http://wiki.openwrt.org/doc/uci/wireless)
-[Trophy of the Future Documentation Part 1](http://samjbrenner.com/notes/making-the-worlds-first-internet-enabled-fantasy-football-trophy-part-1-fabrication/), [Part 2](http://samjbrenner.com/notes/making-the-worlds-first-internet-enabled-fantasy-football-trophy-part-2-programming/)
+* [OpenWrt Wireless Configuration Docs](http://wiki.openwrt.org/doc/uci/wireless)
+* [OpenWrt DHCP Configuration Docs](http://wiki.openwrt.org/doc/uci/dhcp)
+* [OpenWrt UCI Docs](http://wiki.openwrt.org/doc/uci)
+* [`wifi-live-or-reset`](https://github.com/arduino/linino/blob/master/trunk/package/linino/yun-scripts/files/usr/bin/wifi-live-or-reset)
+* [Trophy of the Future Documentation Part 1](http://samjbrenner.com/notes/making-the-worlds-first-internet-enabled-fantasy-football-trophy-part-1-fabrication/), [Part 2](http://samjbrenner.com/notes/making-the-worlds-first-internet-enabled-fantasy-football-trophy-part-2-programming/)
