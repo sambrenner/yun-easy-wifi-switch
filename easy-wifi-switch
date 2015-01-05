@@ -23,12 +23,12 @@ cfg_load=false
 # load config
 if [ -f "$wificfg_a" ] ; then
     source "$wificfg_a"
-    $cfg_load=true
+    cfg_load=true
 fi
 
 if [ -f "$wificfg_b" ] ; then
     source "$wificfg_b"
-    $cfg_load=true
+    cfg_load=true
 fi
 
 if [ "$cfg_load" = true ] ; then
