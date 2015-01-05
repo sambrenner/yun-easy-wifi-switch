@@ -32,6 +32,14 @@ if [ -f "$wificfg_b" ] ; then
 fi
 
 if [ "$cfg_load" = true ] ; then
+    # check if we are coming out of a self-induced reboot
+    if [ -f /tmp/easy-wifi-switch-reboot ] ; then
+	rm /tmp/easy-wifi-switch-reboot
+	echo "all done!"
+	exit 0
+    fi
+
+    # otherwise do the actual switching
     echo "Updating wifi settings:"
     echo " - SSID: $ssid"
     echo " - Key: $key"
@@ -58,12 +66,15 @@ if [ "$cfg_load" = true ] ; then
     $UCI "delete" "dhcp.@dnsmasq[0].interface"
     $UCI "add_list" "dhcp.@dnsmasq[0].interface=lo"
 
+    # ARDUINO
+    $UCI "set" "arduino.@arduino[0].easy_wifi_switch_step=rebooting"
+
     # COMMIT
     $UCI commit
 
     # RESTART
-    /etc/init.d/dnsmasq restart
-    wifi
+    touch /tmp/easy-wifi-switch-reboot
+    reboot
 else
     echo "wifi.cfg was not found. Leaving wifi alone."
 fi
