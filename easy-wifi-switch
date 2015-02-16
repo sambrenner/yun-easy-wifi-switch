@@ -1,6 +1,7 @@
 #!/bin/sh
 
 UCI="/sbin/uci"
+log="/var/log/trophy.log"
 
 # set_or_delete is borrowed from /etc/init.d/handle_wifi_reset
 set_or_delete() {
@@ -35,16 +36,16 @@ if [ "$cfg_load" = true ] ; then
     # check if we are coming out of a self-induced reboot
     if [ -f /root/easy-wifi-switch-reboot ] ; then
 	rm /root/easy-wifi-switch-reboot
-	echo "all done!"
+	echo "all done!" >> $log
 	exit 0
     fi
 
     # otherwise do the actual switching
-    echo "Updating wifi settings:"
-    echo " - SSID: $ssid"
-    echo " - Key: $key"
-    echo " - Encryption: $encryption"
-    echo " "
+    echo "Updating wifi settings:" > $log #note log reset
+    echo " - SSID: $ssid" >> $log
+    echo " - Key: $key" >> $log
+    echo " - Encryption: $encryption" >> $log
+    echo " " >> $log
 
     # apply to OpenWrt UCI
     # WIRELESS: see http://wiki.openwrt.org/doc/uci/wireless
@@ -70,8 +71,9 @@ if [ "$cfg_load" = true ] ; then
     $UCI commit
 
     # RESTART
+    echo "rebooting" >> $log
     /bin/touch /root/easy-wifi-switch-reboot
     /sbin/reboot
 else
-    echo "wifi.cfg was not found. Leaving wifi alone."
+    echo "wifi.cfg was not found. Leaving wifi alone." >> $log
 fi
