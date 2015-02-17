@@ -20,7 +20,7 @@ Using
 1. Remove the USB drive or MicroSD card from the Yun and plug it into a computer.
 2. Open `wifi.cfg` in any text editor and update the SSID, password and encryption variables to the desired values.
 3. Remove the USB drive from your computer and place it back into the Yun.
-4. Reboot the Yun. When it boots up, it will apply the new settings.
+4. Reboot the Yun. When it boots up, it will apply the new settings. (Note that I have to reboot the Yun again after applying the settings, so it will take a bit longer to boot up. Thoughts about this removing this requirement are definitely welcome!)
 
 Background
 ------
