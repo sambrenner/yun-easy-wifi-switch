@@ -36,7 +36,19 @@ if [ "$cfg_load" = true ] ; then
     # check if we are coming out of a self-induced reboot
     if [ -f /root/easy-wifi-switch-reboot ] ; then
 	rm /root/easy-wifi-switch-reboot
+	touch /root/easy-wifi-switch-finished
+	
 	echo "all done!" >> $log
+	exit 0
+    fi
+
+    # check if the config settings are any different from the UCI ones
+    my_ssid=`/sbin/uci "get" "wireless.@wifi-iface[0].ssid"`
+    my_key=`/sbin/uci "get" "wireless.@wifi-iface[0].key"`
+    my_enc=`/sbin/uci "get" "wireless.@wifi-iface[0].encryption"`
+
+    if [ "$my_ssid" = "$ssid" && "$my_key" = "$key" && "$my_enc" = "$encryption" ] ; then
+	echo "no change" >> $log
 	exit 0
     fi
 
@@ -46,7 +58,10 @@ if [ "$cfg_load" = true ] ; then
     echo " - Key: $key" >> $log
     echo " - Encryption: $encryption" >> $log
     echo " " >> $log
-
+    
+    # remove the "success" file if it exists
+    rm /root/easy-wifi-switch-finished
+    
     # apply to OpenWrt UCI
     # WIRELESS: see http://wiki.openwrt.org/doc/uci/wireless
     $UCI "set" "wireless.@wifi-device[0].channel=auto"
