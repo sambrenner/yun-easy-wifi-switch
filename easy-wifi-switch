@@ -1,7 +1,7 @@
 #!/bin/sh
 
 UCI="/sbin/uci"
-log="/var/log/trophy.log"
+log="/var/log/easy-wifi-switch.log"
 
 # set_or_delete is borrowed from /etc/init.d/handle_wifi_reset
 set_or_delete() {
@@ -47,7 +47,7 @@ if [ "$cfg_load" = true ] ; then
     my_key=`/sbin/uci "get" "wireless.@wifi-iface[0].key"`
     my_enc=`/sbin/uci "get" "wireless.@wifi-iface[0].encryption"`
 
-    if [ "$my_ssid" = "$ssid" && "$my_key" = "$key" && "$my_enc" = "$encryption" ] ; then
+    if [ "$my_ssid" = "$ssid" ] && [ "$my_key" = "$key" ] && [ "$my_enc" = "$encryption" ] ; then
 	echo "no change" >> $log
 	exit 0
     fi
