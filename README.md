@@ -7,7 +7,7 @@ It works by reading a wifi network's SSID, password and encryption method from a
 
 I have tested it switching between WiFi networks and switching from AP mode (where the Arduino broadcasts its own network) to a WiFi network.
 
-I have a more detailed write-up building this [on my blog](http://samjbrenner.com/notes/yun-easy-wifi-switch/).
+Read a more detailed write-up [on my blog](http://samjbrenner.com/notes/yun-easy-wifi-switch/).
 
 Installing
 -------
