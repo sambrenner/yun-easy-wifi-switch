@@ -7,6 +7,8 @@ It works by reading a wifi network's SSID, password and encryption method from a
 
 I have tested it switching between WiFi networks and switching from AP mode (where the Arduino broadcasts its own network) to a WiFi network.
 
+I have a more detailed write-up building this [on my blog](http://samjbrenner.com/notes/yun-easy-wifi-switch/).
+
 Installing
 -------
 
@@ -30,6 +32,7 @@ This was created for my [Trophy of the Future](https://github.com/sambrenner/fut
 More Reading
 ------
 
+* [Full Write-Up](http://samjbrenner.com/notes/yun-easy-wifi-switch/)
 * [OpenWrt Wireless Configuration Docs](http://wiki.openwrt.org/doc/uci/wireless)
 * [OpenWrt DHCP Configuration Docs](http://wiki.openwrt.org/doc/uci/dhcp)
 * [OpenWrt UCI Docs](http://wiki.openwrt.org/doc/uci)
